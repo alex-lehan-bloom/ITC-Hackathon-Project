@@ -37,17 +37,19 @@ class Map extends Component {
 		this.setState({ inputPlace: event });
 	}
 
-	handleOnSubmit() {
+	async handleOnSubmit() {
 		let { inputPlace, myPlaceCoordsLat, myPlaceCoordsLng } = this.state;
 		console.log("in the func");
 		// console.log(this.state.inputPlace); // this is the input from the user
-		getlatlng(inputPlace, myPlaceCoordsLat, myPlaceCoordsLng);
+    let response = await getlatlng(inputPlace, myPlaceCoordsLat, myPlaceCoordsLng);
+    console.log(response);
 	}
 
 	render() {
 		return (
-			<>
-				<InputGroup className="mb-3">
+			<div className="row">
+			<div className="col-10 offset-1">
+				<InputGroup className="marginInput">
 					<FormControl
 						placeholder="Where Do You Want To Go?"
 						aria-label="Where Do You Want To Go?"
@@ -76,7 +78,8 @@ class Map extends Component {
 						onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
 					></GoogleMapReact>
 				</div>
-			</>
+			</div>
+			</div>
 		);
 	}
 }

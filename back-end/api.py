@@ -16,6 +16,7 @@ def place_recommendation():
     lat2 = 34.772358
     long2 = 32.061921
     places = get_places_matching_category(category, lat1, long1, lat2, long2)
+    print (places)
     response = app.response_class(response=json.dumps(places), status=200, mimetype="application/json")
     return response
 
