@@ -4,6 +4,22 @@
 }
 
 .marginInput{
-    margin: 50px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;
 }
 
+.titleFont{
+    font-family: 'Fredoka One', cursive;
+    color: cadetblue;
+}
+
+.btnColor{
+    background-color: cadetblue !important;
+}
+.btnColor:hover{
+    background-color: rgb(63, 122, 124) !important;
+    cursor: pointer;
+}
+
+.coavoidLogo{
+    /* height: 50px; */
+}
