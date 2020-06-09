@@ -92,6 +92,7 @@ class Map extends Component {
             {this.state.loader === true && <MyLoader />}
             
 					</div>
+          <div>hi</div>
 				</div>
 			</div>
 		);
