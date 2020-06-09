@@ -45,7 +45,7 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'requests', 'geopy'
+        'requests', 'geopy', 'flask'
     ],
     setup_requires=["pytest-runner", ],
     tests_require=["pytest", ],
