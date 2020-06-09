@@ -4,10 +4,10 @@ import { Button, FormControl, InputGroup } from "react-bootstrap";
 import "../css/Map.css";
 import { getlatlng } from "../lib/api";
 import { ApiKey } from "./api_key";
-import MyLoader from "./Loader"
+import MyLoader from "./Loader";
+import Places from "./Places";
 
 class Map extends Component {
-
 	static defaultProps = {
 		center: {
 			// this are Tel Aviv cocrds
@@ -20,25 +20,54 @@ class Map extends Component {
 		inputPlace: "",
 		//itc coords
 		myPlaceCoordsLat: 32.052725,
-    myPlaceCoordsLng: 34.772358,
-    loader: false,
+		myPlaceCoordsLng: 34.772358,
+		// firstPlaceLat: null,
+		// firstPlaceLng: null,
+		loader: false,
+		data: [],
+		ArrayOfCoordinates: null,
 	};
 
-  renderMarkers(map, maps) {
-    let marker = new maps.Marker({
-      position: {
-        lat: this.state.myPlaceCoordsLat,
-        lng: this.state.myPlaceCoordsLng,
-      },
-      map: map,
-      // title: "Hello World!",
-    });
-  }
+	renderMarkers(map, maps) {
+		let marker = new maps.Marker({
+			position: {
+				lat: this.state.myPlaceCoordsLat,
+				lng: this.state.myPlaceCoordsLng,
+			},
+			map: map,
+			// title: "Hello World!",
+		});
+    console.log("this.state.ArrayOfCoordinates")
+    console.log(this.state.ArrayOfCoordinates)
+		if (this.state.ArrayOfCoordinates !== null) {
+			this.state.ArrayOfCoordinates.map((item) => {
+				console.log(item);
+				// let marker2 = new maps.Marker({
+				// 	position: {
+				// 		lat: 32.055125,
+				// 		lng: 34.772458,
+				// 	},
+				// 	map: map,
+				// 	// title: "Hello World!",
+				// });
+			});
+		}
+	}
+	// makeNewMarker() {
+	//   let marker = new maps.Marker({
+	// 		position: {
+	// 			lat: this.state.firstPlaceLat,
+	// 			lng: this.state.firstPlaceLng,
+	// 		},
+	// 		map: map,
+	// 		// title: "Hello World!",
+	// 	});
+	// }
 
-  handleOnChange(event) {
-    console.log(event);
-    this.setState({ inputPlace: event });
-  }
+	handleOnChange(event) {
+		console.log(event);
+		this.setState({ inputPlace: event });
+	}
 
 	async handleOnSubmit() {
 		let { inputPlace, myPlaceCoordsLat, myPlaceCoordsLng } = this.state;
@@ -49,15 +78,31 @@ class Map extends Component {
 			myPlaceCoordsLat,
 			myPlaceCoordsLng
 		);
-		console.log(response);
+		this.setState({ data: response.data });
+		console.log("response.data");
+		console.log(response.data);
+		// console.log(response.data.coordinates.lng)
+		// this.setState({firstPlaceLat: response.data.lat})
+		// this.setState({firstPlaceLng: response.data.lng})
+	}
+
+	handleCordinates(coordinates) {
+		console.log(coordinates);
+		this.setState({ ArrayOfCoordinates: coordinates });
 	}
 
 	render() {
+		let { data } = this.state;
+		// console.log("data from render")
+		// console.log(data)
 		return (
 			<div className="row">
 				<div className="col-10 offset-1">
-          {/* <h1 className="marginInput titleFont">co(a)void-19</h1> */}
-          <img src="./images/coavoid-logo.png" className="coavoidLogo" alt="co(a)void-19"/>
+					<img
+						src="./images/coavoid-logo.png"
+						className="coavoidLogo"
+						alt="co(a)void-19"
+					/>
 					<InputGroup className="marginInput">
 						<FormControl
 							placeholder="Where Do You Want To Go?"
@@ -67,8 +112,7 @@ class Map extends Component {
 						/>
 						<InputGroup.Append>
 							<Button
-              className="btnColor"
-								// variant="primary"
+								className="btnColor"
 								onClick={() => {
 									this.handleOnSubmit();
 								}}
@@ -81,18 +125,22 @@ class Map extends Component {
 					<div className="map">
 						<GoogleMapReact
 							bootstrapURLKeys={{
-                key: ApiKey,
+								key: ApiKey,
 							}}
 							defaultCenter={this.props.center}
 							defaultZoom={this.props.zoom}
 							onGoogleApiLoaded={({ map, maps }) =>
-              this.renderMarkers(map, maps)
-            }
+								this.renderMarkers(map, maps)
+							}
 						></GoogleMapReact>
-            {this.state.loader === true && <MyLoader />}
-            
+						{this.state.loader === true && <MyLoader />}
 					</div>
-          <div>hi</div>
+					<Places
+						data={this.state.data}
+						handleCordinates={(cordinates) => {
+							this.handleCordinates(cordinates);
+						}}
+					/>
 				</div>
 			</div>
 		);
