@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import Map from "./Map";
+import GaugeChart from "react-gauge-chart";
 
 function Places(props) {
 	const [data, setData] = useState();
@@ -25,42 +26,51 @@ function Places(props) {
 		props.handleCordinates(coordinates);
 	}, [coordinates]);
 
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state = {
-	// 		data: this.props.data,
-	// 	};
-	// }
-
-	// componentDidUpdate() {
-	//     this.setState({data: this.props.data})
-	// }
-
-	// let { data } = this.state;
-	// console.log("DATA");
-	// console.log(data);
-	// console.log(this.props.data);
 	return (
-		<div>
+		<>
 			{data !== undefined && (
 				<ul className="data-ul">
 					{data.map((item) => (
 						<>
 							<li key={item.id} className="place-in-list">
-								{/* {this.setState({ firstPlaceLat: item.coordinates.lat })} */}
-								{/* {this.setState({ firstPlaceLng: item.coordinates.lng })} */}
-								<div className="name-date">
-									<span>Name: {item.name} </span>
-									<span>Rating: {item.rating}</span>
+								<div className="detail flexColum">
+									<div>
+										<b>{item.name}</b>
+									</div>
 								</div>
-								<div className="tweet-text">{item.coordinates.lat}</div>
-								<div className="tweet-text">{item.coordinates.lng}</div>
+								{/* <div className="chart flex">
+									
+                                
+                                    
+								</div> */}
+								<div className="rating flexColum">
+									<div>Population</div>
+									<div className="flex chart">
+										<GaugeChart
+											id={item.id}
+											className="gaugeChart"
+											style={{ width: "80%" }}
+											textColor={"rgb(0, 0, 0)"}
+											nrOfLevels={10}
+											colors={["#FF5F6D", "rgb(105, 189, 79)"]}
+											arcWidth={0.3}
+											percent={0.37}
+										/>
+									</div>
+								</div>
+
+								<div className="rating flexColum">
+									<div>Rating</div>
+									<div className="ratingBox">{item.rating}</div>
+								</div>
+								{/* <div className="tweet-text">{item.coordinates.lat}</div>
+								<div className="tweet-text">{item.coordinates.lng}</div> */}
 							</li>
 						</>
 					))}
 				</ul>
 			)}
-		</div>
+		</>
 	);
 }
 
