@@ -12,8 +12,9 @@ CORS(app)
 def place_recommendation():
     content = request.args
     category = content.get('category')
-    test = min_pop(mock_data)
-    response = app.response_class(response=json.dumps(test), status=200, mimetype="application/json")
+    # print(mock_data)
+    # test = min_pop(mock_data)
+    response = app.response_class(response=json.dumps(mock_data), status=200, mimetype="application/json")
     return response
 
 if __name__ == "__main__":
