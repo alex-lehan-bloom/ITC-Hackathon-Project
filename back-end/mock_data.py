@@ -22,6 +22,7 @@ test_response = supermarkets = [{'id': 'ChIJ5U6AU4pmZIgRTy9MRPVw2r8','name': 'Su
     'lng': 34.7699463
   },
   'rating': 3,
+  'percentage': 0.37,
   'rating_n': 1041,
   'populartimes': [{
     'name': 'Monday',
@@ -71,6 +72,7 @@ test_response = supermarkets = [{'id': 'ChIJ5U6AU4pmZIgRTy9MRPVw2r8','name': 'Su
 }, {
   'id': 'ChIJ5U6AU4pmZIgRTy9MRPVw2r8',
   'name': 'Supermarket2',
+  'percentage': 0.56,
   'address': 'Shoken 18, Tel Aviv',
   'types': ['supermarket'],
   'coordinates': {
@@ -127,6 +129,7 @@ test_response = supermarkets = [{'id': 'ChIJ5U6AU4pmZIgRTy9MRPVw2r8','name': 'Su
 }, {
   'id': 'ChIJ5U6AU4pmZIgRTy9MRPVw2r8',
   'name': 'Supermarket3',
+  'percentage': 0.42,
   'address': 'Shoken 18, Tel Aviv',
   'types': ['supermarket'],
   'coordinates': {
@@ -182,7 +185,6 @@ test_response = supermarkets = [{'id': 'ChIJ5U6AU4pmZIgRTy9MRPVw2r8','name': 'Su
   'time_spent': [90, 150]
 }]
 
-print(test_response)
 # print(sublist)
 
 # for i in range(1,101):
