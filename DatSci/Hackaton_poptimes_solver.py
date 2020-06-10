@@ -30,9 +30,11 @@ def min_pop(data):
     best_id_day_time.rename(columns={0: 'hr'}, inplace = True)
     # add info
     inf_dat = pos_info.loc[pos_info['id'].isin(list(minimum_pop['id'])) ][infos_need]
+    inf_dat = pos_info.loc[pos_info['id'].isin(list(minimum_pop['id']))]
     respdata = pd.merge(best_id_day_time, inf_dat, left_on='id', right_on='id', how='outer' )
     respdata = respdata.to_dict('index')
     result_dict = [x for x in respdata.values()]
     return result_dict
 
 
+print(result_dict())
