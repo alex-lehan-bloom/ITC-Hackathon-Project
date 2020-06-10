@@ -30,19 +30,22 @@ function Places(props) {
     props.handleCordinates(coordinates);
   }, [coordinates]);
 
-  return (
-    <>
-      {data !== undefined && (
-        <ul className="data-ul">
-          {data.map((item) => (
-            <>
-              <li key={item.id} className="place-in-list">
-                <div className="detail flexColum">
-                  <div>
-                    <b>{item.name}</b>
-                  </div>
-                </div>
-                {/* <div className="chart flex">
+
+	return (
+		<>
+			{data !== undefined && (
+				<ul className="data-ul">
+					{data.map((item) => (
+						<>
+							<li key={item.id} className="place-in-list">
+								<div className="detail flexColum">
+									<div>
+										<b>{item.name}</b>
+									</div>
+									<div>{item.address}</div>
+								</div>
+								{/* <div className="chart flex">
+
 									
                                 
                                     

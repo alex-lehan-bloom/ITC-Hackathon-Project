@@ -1,7 +1,7 @@
 from flask_cors import CORS
 import json
 from flask import Flask, request
-# from DatSci.Hackaton_poptimes_solver import min_pop
+from DatSci.Hackaton_poptimes_solver import min_pop
 from mock_data import mock_data
 import datetime
 import datetime as dt
