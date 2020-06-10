@@ -1,25 +1,99 @@
 .map {
-    height: 500px;
-    width: 100%;
+	height: 500px;
+	width: 100%;
 }
 
-.marginInput{
-    margin: 20px 0px 20px 0px;
+.marginInput {
+	margin: 20px 0px 20px 0px;
 }
 
-.titleFont{
-    font-family: 'Fredoka One', cursive;
-    color: cadetblue;
+.titleFont {
+	font-family: "Fredoka One", cursive;
+	color: cadetblue;
 }
 
-.btnColor{
-    background-color: cadetblue !important;
+.btnColor {
+	background-color: cadetblue !important;
 }
-.btnColor:hover{
-    background-color: rgb(63, 122, 124) !important;
-    cursor: pointer;
+.btnColor:hover {
+	background-color: rgb(63, 122, 124) !important;
+	cursor: pointer;
 }
 
-.coavoidLogo{
-    /* height: 50px; */
+.coavoidLogo {
+	/* height: 50px; */
+}
+
+.place-in-list {
+	background-color: white;
+	border-radius: 6px;
+	padding: 20px;
+	margin: 10px 0px;
+	list-style: none;
+	color: black;
+	font-size: 14px;
+	/* width: 100%; */
+	display: flex;
+	justify-content: space-between;
+	width: 50vh;
+}
+
+.data-ul {
+	padding-left: 0px;
+	padding-right: 40px;
+	/* color: #FF5F6D;
+    color: rgb(105, 189, 79); */
+	/* color: rgb(0, 0, 0); */
+}
+
+.detail {
+}
+.rating {
+}
+
+.flexColum {
+	display: flex;
+	flex-direction: column;
+}
+
+.ratingBox {
+	background-color: cadetblue;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+	color: white;
+}
+
+.flex {
+	display: flex;
+}
+
+.mapSize {
+	width: 100%;
+}
+
+.gaugeChart {
+	margin-top: 10px;
+	/* width: 80%; */
+}
+
+@media screen and (max-width: 1200px) {
+	.main-box {
+		flex-direction: column;
+		align-items: center;
+	}
+	.data-ul {
+		padding: 0px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.map {
+		height: 300px;
+	}
+
+	.place-in-list {
+		width: 80%;
+	}
 }
